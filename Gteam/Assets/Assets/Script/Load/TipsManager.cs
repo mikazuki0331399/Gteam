@@ -34,10 +34,9 @@ public class TipsManager : MonoBehaviour
 
         titleText.text = tips[index].title;
         messageText.text = tips[index].message;
-        
 
-        PickUpImage.color = tips[index].titleColor;
+        //PickUpImage.color = tips[index].titleColor;
+
         slideIn1.PlaySlide();
-     
     }
 }
