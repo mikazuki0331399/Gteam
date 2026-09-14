@@ -1,6 +1,7 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SystemErrorManager : MonoBehaviour
 {
@@ -16,18 +17,34 @@ public class SystemErrorManager : MonoBehaviour
     [SerializeField]
     private GameObject systemErrorText;
 
+    [SerializeField]
+    private TextMeshProUGUI troubleText;
+
+    [SerializeField]
+    private SystemErrorShake systemErrorShake;
+
 
     IEnumerator Start()
     {
         while (true)
         {
-            // ƒGƒ‰[”­¶‚Ü‚Å‘Ò‹@
+            // ã‚¨ãƒ©ãƒ¼ç™ºç”Ÿã¾ã§å¾…æ©Ÿ
             yield return new WaitForSeconds(
                 Random.Range(20f, 30f));
 
-            Debug.Log("SYSTEM ERROR ”­¶");
+            Debug.Log("SYSTEM ERROR ç™ºç”Ÿ");
 
-            // ƒmƒCƒY•\¦
+            systemErrorShake.isSystemError = true;
+
+            troubleText.text = "CAUTION";
+
+            troubleText.gameObject.SetActive(true);
+
+            yield return new WaitForSeconds(2f);
+
+            troubleText.gameObject.SetActive(false);
+
+            // ãƒã‚¤ã‚ºè¡¨ç¤º
             noiseImage1.SetActive(true);
             noiseImage2.SetActive(true);
 
@@ -40,21 +57,26 @@ public class SystemErrorManager : MonoBehaviour
             {
                 targetRange.SetActive(!targetRange.activeSelf);
 
+                systemErrorText.SetActive(
+                    !systemErrorText.activeSelf);
+
                 yield return new WaitForSeconds(0.5f);
 
                 timer += 0.5f;
             }
 
-            // I—¹‚Í•K‚¸•\¦ó‘Ô‚É–ß‚·
+            // çµ‚äº†æ™‚ã¯å¿…ãšè¡¨ç¤ºçŠ¶æ…‹ã«æˆ»ã™
             targetRange.SetActive(true);
 
-            // ƒmƒCƒY”ñ•\¦
+            // ãƒã‚¤ã‚ºéè¡¨ç¤º
             noiseImage1.SetActive(false);
             noiseImage2.SetActive(false);
 
+            systemErrorShake.isSystemError = false;
+
             systemErrorText.SetActive(false);
 
-            Debug.Log("SYSTEM ERROR I—¹");
+            Debug.Log("SYSTEM ERROR çµ‚äº†");
         }
     }
 }

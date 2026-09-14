@@ -1,32 +1,44 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TroubleManager : MonoBehaviour
 {
     [SerializeField]
     private PlayerPowerController playerPower;
 
+    [SerializeField]
+    private TextMeshProUGUI troubleText;
+
     IEnumerator Start()
     {
         while (true)
         {
-            // 10`20•b‚ÌŠÔ‚Åƒ‰ƒ“ƒ_ƒ€‘Ò‹@
+            // 10ï½20ç§’ã®é–“ã§ãƒ©ãƒ³ãƒ€ãƒ å¾…æ©Ÿ
             yield return new WaitForSeconds(
                 Random.Range(10f, 20f));
 
-            Debug.Log("p¨—‚ê”­¶I");
+            Debug.Log("å§¿å‹¢ä¹±ã‚Œç™ºç”Ÿï¼");
 
-            // ƒgƒ‰ƒuƒ‹ŠJn
+            troubleText.text = "CAUTION";
+
+            troubleText.gameObject.SetActive(true);
+
+            yield return new WaitForSeconds(2f);
+
+            troubleText.gameObject.SetActive(false);
+
+            // ãƒˆãƒ©ãƒ–ãƒ«é–‹å§‹
             playerPower.isTrouble = true;
 
-            // 10•bŒp‘±
+            // 10ç§’ç¶™ç¶š
             yield return new WaitForSeconds(10f);
 
-            // ƒgƒ‰ƒuƒ‹I—¹
+            // ãƒˆãƒ©ãƒ–ãƒ«çµ‚äº†
             playerPower.isTrouble = false;
 
-            Debug.Log("p¨—‚êI—¹");
+            Debug.Log("å§¿å‹¢ä¹±ã‚Œçµ‚äº†");
         }
     }
 }
