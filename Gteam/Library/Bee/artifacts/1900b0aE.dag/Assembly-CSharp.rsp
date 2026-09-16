@@ -372,6 +372,8 @@
 "Assets/Assets/Script/Load/SlideIn.cs"
 "Assets/Assets/Script/Load/TipData.cs"
 "Assets/Assets/Script/Load/TipsManager.cs"
+"Assets/Assets/Script/Result/Button/EarthPatch.cs"
+"Assets/Assets/Script/Result/Button/ResultButton.cs"
 "Assets/Assets/Space/Shipwrecks/Scripts/CombineChildren.cs"
 "Assets/Assets/Space/Shipwrecks/Scripts/MeshCombineUtility.cs"
 "Assets/Assets/Space/SpaceDebris/Scripts/CameraFocus.cs"
