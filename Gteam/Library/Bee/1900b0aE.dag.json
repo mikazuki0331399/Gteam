@@ -21153,7 +21153,11 @@
       "DisplayName": "Writing Assembly-CSharp.rsp",
       "ActionType": "WriteFile",
       "PayloadOffset": 1578914,
+<<<<<<< HEAD
       "PayloadLength": 35758,
+=======
+      "PayloadLength": 36120,
+>>>>>>> main
       "PayloadDebugContentSnippet": "-target:library\n-out:\"Library/",
       "Inputs": [],
       "Outputs": [
@@ -21165,7 +21169,11 @@
       "Annotation": "WriteText Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.rsp2",
       "DisplayName": "Writing Assembly-CSharp.rsp2",
       "ActionType": "WriteFile",
+<<<<<<< HEAD
       "PayloadOffset": 1614759,
+=======
+      "PayloadOffset": 1615121,
+>>>>>>> main
       "PayloadLength": 0,
       "PayloadDebugContentSnippet": "",
       "Inputs": [],
@@ -21421,6 +21429,16 @@
         "Assets/Assets/Script/Game1/Ui/HealthGauge.cs",
         "Assets/Assets/Script/Game1/Ui/StarMove.cs",
         "Assets/Assets/Script/Game1/Ui/StarSpawner.cs",
+        "Assets/Assets/Script/Game2/Debris/DebrisMove.cs",
+        "Assets/Assets/Script/Game2/Debris/WireController.cs",
+        "Assets/Assets/Script/Game2/UI/Gauge/Power/PlayerPowerController.cs",
+        "Assets/Assets/Script/Game2/UI/Gauge/Power/PowerCheck.cs",
+        "Assets/Assets/Script/Game2/UI/Gauge/Power/TargetRangeController.cs",
+        "Assets/Assets/Script/Game2/UI/Gauge/Progress/ProgressGaugeController.cs",
+        "Assets/Assets/Script/Game2/UI/Gauge/Timer/TimerController.cs",
+        "Assets/Assets/Script/Game2/UI/Trouble/SystemErrorManager.cs",
+        "Assets/Assets/Script/Game2/UI/Trouble/SystemErrorShake.cs",
+        "Assets/Assets/Script/Game2/UI/Trouble/TroubleManager.cs",
         "Assets/Assets/Script/Load/Ball_Spin.cs",
         "Assets/Assets/Script/Load/SlideIn.cs",
         "Assets/Assets/Script/Load/TipData.cs",
@@ -21523,7 +21541,11 @@
       "Annotation": "WriteText Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll.mvfrm.rsp",
       "DisplayName": "Writing Assembly-CSharp.dll.mvfrm.rsp",
       "ActionType": "WriteFile",
+<<<<<<< HEAD
       "PayloadOffset": 1614855,
+=======
+      "PayloadOffset": 1615217,
+>>>>>>> main
       "PayloadLength": 9449,
       "PayloadDebugContentSnippet": "Library\\Bee\\artifacts\\mvdfrm\\U",
       "Inputs": [],
