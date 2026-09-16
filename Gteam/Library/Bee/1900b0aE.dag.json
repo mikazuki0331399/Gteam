@@ -21153,7 +21153,11 @@
       "DisplayName": "Writing Assembly-CSharp.rsp",
       "ActionType": "WriteFile",
       "PayloadOffset": 1578914,
+<<<<<<< HEAD
+      "PayloadLength": 35758,
+=======
       "PayloadLength": 36120,
+>>>>>>> main
       "PayloadDebugContentSnippet": "-target:library\n-out:\"Library/",
       "Inputs": [],
       "Outputs": [
@@ -21165,7 +21169,11 @@
       "Annotation": "WriteText Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.rsp2",
       "DisplayName": "Writing Assembly-CSharp.rsp2",
       "ActionType": "WriteFile",
+<<<<<<< HEAD
+      "PayloadOffset": 1614759,
+=======
       "PayloadOffset": 1615121,
+>>>>>>> main
       "PayloadLength": 0,
       "PayloadDebugContentSnippet": "",
       "Inputs": [],
@@ -21412,6 +21420,11 @@
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll",
         "Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll",
         "Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll",
+        "Assets/Assets/Script/Game1/Enemy/EnemyMove.cs",
+        "Assets/Assets/Script/Game1/Enemy/EnemySpawner.cs",
+        "Assets/Assets/Script/Game1/Enemy/SpawnPointDebug.cs",
+        "Assets/Assets/Script/Game1/Health/Heal Moves.cs",
+        "Assets/Assets/Script/Game1/Health/Heal Sponner.cs",
         "Assets/Assets/Script/Game1/Ui/CameraShake.cs",
         "Assets/Assets/Script/Game1/Ui/HealthGauge.cs",
         "Assets/Assets/Script/Game1/Ui/StarMove.cs",
@@ -21528,7 +21541,11 @@
       "Annotation": "WriteText Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll.mvfrm.rsp",
       "DisplayName": "Writing Assembly-CSharp.dll.mvfrm.rsp",
       "ActionType": "WriteFile",
+<<<<<<< HEAD
+      "PayloadOffset": 1614855,
+=======
       "PayloadOffset": 1615217,
+>>>>>>> main
       "PayloadLength": 9449,
       "PayloadDebugContentSnippet": "Library\\Bee\\artifacts\\mvdfrm\\U",
       "Inputs": [],
