@@ -7,11 +7,11 @@
 #
 .utmp/
 Gteam/[Ll]ibrary/
-/[Tt]emp/
+Gteam/[Tt]emp/
 Gteam/[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
-/[Ll]ogs/
+Gteam/[Ll]ogs/
 Gteam/[Uu]ser[Ss]ettings/
 *.log
 
