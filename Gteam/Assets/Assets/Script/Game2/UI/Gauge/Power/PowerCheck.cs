@@ -18,6 +18,9 @@ public class PowerCheck : MonoBehaviour
     [SerializeField]
     private ProgressGaugeController progressGauge;
 
+    [SerializeField]
+    private DebrisMove debrisMove;
+
     void Update()
     {
         // Y座標の差を取得
@@ -27,21 +30,17 @@ public class PowerCheck : MonoBehaviour
                 targetRange.localPosition.y);
 
         // 成功範囲判定
-        if (distance < 40f)
-        {
-            //上昇量
-            progress += 1f * Time.deltaTime;
-
-            //Debug.Log("進行度 : " + progress);
-        }
 
         if (distance < 40f)
         {
-            progress += 10f * Time.deltaTime;
+            //進行度
+            progress += 50f * Time.deltaTime;
 
             progressGauge.SetProgress(progress);
 
-            //Debug.Log("進行度 : " + progress);
+            debrisMove.UpdateProgress(progress);
+
+            Debug.Log("進行度 : " + progress);
         }
 
         //ゴール処理
