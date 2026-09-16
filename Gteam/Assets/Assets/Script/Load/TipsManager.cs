@@ -34,7 +34,7 @@ public class TipsManager : MonoBehaviour
 
         CanvasGroup titleGroup =
             titleText.GetComponent<CanvasGroup>();
-
+        
         CanvasGroup msgGroup =
             messageText.GetComponent<CanvasGroup>();
 
