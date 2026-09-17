@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 200
-  destroyDistance: 50
+  destroyDistance: 75
   speed: 20
   centerPoint: {fileID: 0}
 --- !u!54 &-6761277357161244817
