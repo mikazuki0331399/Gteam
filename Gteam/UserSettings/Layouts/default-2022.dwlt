@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 772.8
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Project
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 321}
   m_MaxSize: {x: 10000, y: 10000}
@@ -409,10 +409,10 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 295}
+    scrollPos: {x: 0, y: 267}
     m_SelectedIDs: 14600000
     m_LastClickedID: 24596
-    m_ExpandedIDs: 00000000d65f0000d85f0000da5f0000dc5f0000de5f0000e05f0000e25f0000e45f0000e65f0000e85f0000ea5f0000ec5f0000ee5f0000f05f000000ca9a3b
+    m_ExpandedIDs: 00000000d65f0000d85f0000da5f0000dc5f0000de5f0000e05f0000e25f0000e45f0000e65f0000e85f0000ea5f0000ec5f0000ee5f0000f05f00000260000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -580,9 +580,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 28600000
+      m_SelectedIDs: 26600000
       m_LastClickedID: 0
-      m_ExpandedIDs: aaf3ffff36f4ffff78f4ffff04f5ffff46f9ffff30fbffff34640000
+      m_ExpandedIDs: 90f3ffff0af4ffff3ef4ffffaef4fffffaf4ffffbaf5fffffcf5ffff60f6ffff7ef7ffff3efaffff40faffff30fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
