@@ -6,6 +6,7 @@ using TMPro;
 public class TipData
 {
     public string title;
-    public Color titleColor;
+
+    [TextArea(2, 5)]
     public string message;
 }
