@@ -24,36 +24,44 @@ public class HealthGauge : MonoBehaviour
     {
         // DoTweenÇòAåãÇµÇƒìÆÇ©Ç∑
         healthImage.DOFillAmount(value, duration)
-            .OnComplete(() =>
-            {
-                burnImage
-                    .DOFillAmount(value, duration / 2f)
-                    .SetDelay(0.5f);
-            });
-        transform.DOShakePosition(
-            duration / 2f,
-            strength, vibrate);
+                .OnComplete(() =>
+                {
+                    burnImage
+                        .DOFillAmount(value, duration / 2f)
+                        .SetDelay(0.5f);
+                });
 
         currentRate = value;
+
     }
+
+    // HPÉoÅ[ÇóhÇÁÇ∑
+    public void ShakeGauge()
+    {
+        transform.DOShakePosition(
+            duration / 2f,
+            strength,
+            vibrate);
+    }
+
 
     public void TakeDamage(float rate)
     {
         SetGauge(currentRate - rate);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(debugDamageRate);
-        }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        TakeDamage(debugDamageRate);
+    //    }
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            transform.DOShakePosition(
-                duration / 2f,
-                strength, vibrate);
-        }
-    }
+    //    if (Input.GetKeyDown(KeyCode.A))
+    //    {
+    //        transform.DOShakePosition(
+    //            duration / 2f,
+    //            strength, vibrate);
+    //    }
+    //}
 }
