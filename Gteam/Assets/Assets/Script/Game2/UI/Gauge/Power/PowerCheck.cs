@@ -34,7 +34,7 @@ public class PowerCheck : MonoBehaviour
         if (distance < 40f)
         {
             //進行度
-            progress += 50f * Time.deltaTime;
+            progress += 5f * Time.deltaTime;
 
             progressGauge.SetProgress(progress);
 
