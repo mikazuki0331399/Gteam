@@ -16,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
     public float randomSpawnRange = 5f;
 
     public bool gameStarted = false;
+    public GameObject enemyPrefab;
     public void StartGame()
     {
         gameStarted = true;
@@ -32,56 +33,12 @@ public class EnemySpawner : MonoBehaviour
     }
     void SpawnEnemy()
     {
-        int rand = Random.Range(0, 4);
-
-        Transform spawnPoint = null;
-        Vector3 direction = Vector3.zero;
-
-        switch (rand)
-        {
-            case 0:
-                spawnPoint = leftSpawn;
-                direction = new Vector3(1, 0, -0.5f);
-                break;
-
-            case 1:
-                spawnPoint = rightSpawn;
-                direction = new Vector3(-1, 0, -0.5f);
-                break;
-            case 2:
-                spawnPoint = leftUpSpawn;
-                direction = new Vector3(1, 0, -1);
-                break;
-            case 3:
-                spawnPoint = rightUpSpawn;
-                direction = new Vector3(-1, 0, -1);
-                break;
-        }
-        float limitZ = 46.3f + spawnRange + destroyOffset;
-
-        int enemyType =
-            Random.Range(0, enemyPrefabs.Length);
-
-
-        Vector3 spawnPos = spawnPoint.position;
-
-        spawnPos.z += Random.Range(
-            0f,
-            spawnRange
-        );
-
-
-
-        GameObject enemy =
-            Instantiate(
-                enemyPrefabs[enemyType],
-                spawnPos,
-                Quaternion.identity
-            );
-
-        enemy.GetComponent<EnemyMove>()
-            .SetDirection(direction);
-
+        Instantiate(
+            enemyPrefab,
+            transform.position,
+            Quaternion.identity
+  
+  );
 
     }
    
