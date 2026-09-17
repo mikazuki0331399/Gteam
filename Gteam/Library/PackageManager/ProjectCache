@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 639247913199929433
+      ticks: 639252170041739813
     m_Hash: 3411266789
   m_LockFileStatus:
     m_FilePath: C:/Users/student/Desktop/Gteam/Gteam/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 639247913199929433
+      ticks: 639252170041739813
     m_Hash: 3034174635
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -134,9 +134,6 @@ m_ResolvedPackages:
     - 2.11.4
     - 2.12.4
     - 2.13.3
-    - 2.13.4
-    - 2.13.5
-    - 2.13.6
     compatible:
     - 2.7.1
     - 2.8.1
@@ -610,7 +607,6 @@ m_ResolvedPackages:
     - 1.8.10
     - 1.8.11
     - 1.8.12
-    - 1.8.13
     compatible:
     - 1.7.7
     - 1.8.0
@@ -814,7 +810,6 @@ m_ResolvedPackages:
     - 1.9.9
     - 1.9.10
     - 1.9.11
-    - 1.9.12
     compatible:
     - 1.9.4
     - 1.9.5
@@ -2852,15 +2847,13 @@ m_ResolvedPackages:
     - 2.0.25
     - 2.0.26
     - 2.0.27
-    - 2.0.28
     compatible:
     - 2.0.22
     - 2.0.23
     - 2.0.25
     - 2.0.26
     - 2.0.27
-    - 2.0.28
-    recommended: 2.0.28
+    recommended: 2.0.27
     deprecated: []
   dependencies:
   - name: com.unity.test-framework
@@ -2974,7 +2967,6 @@ m_ResolvedPackages:
     - 3.0.38
     - 3.0.39
     - 3.0.40
-    - 3.1.0
     compatible:
     - 3.0.36
     - 3.0.37
