@@ -7,6 +7,7 @@ public class StarMove : MonoBehaviour
     [SerializeField]
     private float speed = 100f;
 
+
     // カウントダウン後に動かす用
     public bool canMove = true;
 
@@ -16,6 +17,9 @@ public class StarMove : MonoBehaviour
         {
             return;
         }
+
+        transform.position +=
+                Vector3.back * speed * Time.deltaTime;
 
         transform.Translate(Vector3.down * speed * Time.deltaTime);
 

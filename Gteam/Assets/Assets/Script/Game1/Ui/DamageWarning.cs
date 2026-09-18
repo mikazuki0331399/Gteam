@@ -9,29 +9,31 @@ public class DamageWarning : MonoBehaviour
 
     public bool isDanger = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float blinkSpeed = 2f;
 
-    // Update is called once per frame
+    public float maxAlpha = 0.3f;
+
     void Update()
     {
+        Debug.Log(isDanger);
+
+        Color color = damageImage.color;
+        color.a = 1f;
+        damageImage.color = color;
+
         if (isDanger)
         {
-            Color color = damageImage.color;
-
-            color.a = Mathf.PingPong(Time.time * 0.5f, 0.1f);
-            damageImage.color = color;
+            color.a =
+            Mathf.PingPong(
+            Time.time * blinkSpeed,
+            maxAlpha
+            );
         }
         else
         {
-            Color color = damageImage.color;
-
-            color.a = .0f;
-
-            damageImage.color = color;
+            color.a = 0f;
         }
+
+        damageImage.color = color;
     }
 }

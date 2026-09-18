@@ -44,6 +44,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private DamageWarning damageWarning;
    
+
     void Start()
     {
         canMove = false;
@@ -97,6 +98,8 @@ public class PlayerMove : MonoBehaviour
             hp--;
             if (hp <= 3)
             {
+                Debug.Log("Danger ON");
+
                 damageWarning.isDanger = true;
             }
             
