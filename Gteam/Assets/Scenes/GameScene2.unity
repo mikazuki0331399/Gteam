@@ -1916,6 +1916,7 @@ GameObject:
   - component: {fileID: 1397706719}
   - component: {fileID: 1397706718}
   - component: {fileID: 1397706721}
+  - component: {fileID: 1397706722}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2011,6 +2012,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakePower: 10
   isSystemError: 0
+--- !u!114 &1397706722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397706717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5485beb01e4d974994ffc239a9e4383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateRange: 1
+  rotateSpeed: 0.5
 --- !u!1 &1543350852
 GameObject:
   m_ObjectHideFlags: 0
@@ -2446,19 +2461,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4551044382014036, guid: fd6e1b65e04ff724c9a68bd5d3c7d171, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.3980279
+      value: -0.45705277
       objectReference: {fileID: 0}
     - target: {fileID: 4551044382014036, guid: fd6e1b65e04ff724c9a68bd5d3c7d171, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.015980048
+      value: 0.8128504
       objectReference: {fileID: 0}
     - target: {fileID: 4551044382014036, guid: fd6e1b65e04ff724c9a68bd5d3c7d171, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.3904188
+      value: -0.31930497
       objectReference: {fileID: 0}
     - target: {fileID: 4551044382014036, guid: fd6e1b65e04ff724c9a68bd5d3c7d171, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.8299949
+      value: -0.16858637
       objectReference: {fileID: 0}
     - target: {fileID: 4551044382014036, guid: fd6e1b65e04ff724c9a68bd5d3c7d171, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
