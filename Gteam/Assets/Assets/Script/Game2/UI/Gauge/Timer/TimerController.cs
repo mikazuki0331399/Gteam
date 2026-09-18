@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using DG.Tweening.Core.Easing;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
-
+using UnityEngine;
+using UnityEngine.SceneManagement;
 public class TimerController : MonoBehaviour
 {
     // 制限時間
@@ -13,6 +14,10 @@ public class TimerController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI timerText;
 
+    // フェード管理
+    [SerializeField]
+    private FadeManager fadeManager;
+    private bool isGameOver = false;
     void Update()
     {
         // 時間を減らす
@@ -28,9 +33,19 @@ public class TimerController : MonoBehaviour
         timerText.text = "TIME : " + Mathf.CeilToInt(timeLimit);
 
         // ゲームオーバー
-        if (timeLimit <= 0)
+        if (timeLimit <= 0 && !isGameOver)
         {
-            Debug.Log("ゲームオーバー");
+            isGameOver = true;
+            StartCoroutine(GameOverRoutine());
         }
+    }
+
+    IEnumerator GameOverRoutine()
+    {
+        yield return StartCoroutine(
+            fadeManager.FadeOut(1f));
+
+        Debug.Log("ゲームオーバーシーンへ移動");
+        //SceneManager.LoadScene("GameOverScene");
     }
 }

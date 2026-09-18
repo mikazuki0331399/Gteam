@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PowerCheck : MonoBehaviour
 {
@@ -40,6 +41,9 @@ public class PowerCheck : MonoBehaviour
     [SerializeField]
     private SystemErrorManager systemErrorManager;
 
+    [SerializeField]
+    private FadeManager fadeManager;
+
     private bool isClear = false;
 
     void Update()
@@ -55,7 +59,7 @@ public class PowerCheck : MonoBehaviour
         if (distance < 40f)
         {
             //進行度
-            progress += 50f * Time.deltaTime;
+            progress += 1f * Time.deltaTime;
 
             progressGauge.SetProgress(progress);
 
@@ -85,9 +89,8 @@ public class PowerCheck : MonoBehaviour
         troubleManager.enabled = false;
         systemErrorManager.enabled = false;
 
-        // 追加
+        // システムエラー強制終了
         systemErrorManager.ForceStop();
-        systemErrorManager.enabled = false;
 
         // クリア文字表示
         clearText.SetActive(true);
@@ -97,9 +100,12 @@ public class PowerCheck : MonoBehaviour
         // 3秒待つ
         yield return new WaitForSeconds(3f);
 
-        Debug.Log("リザルトシーンへ移動");
+        // フェードアウト
+        //yield return StartCoroutine(fadeManager.FadeOut(1f));
 
-        // 後で追加
-        // SceneManager.LoadScene("ResultScene");
+        Debug.Log("クリアシーンへ移動");
+
+        // クリアシーンへ
+        //SceneManager.LoadScene("ResultScene");
     }
 }
