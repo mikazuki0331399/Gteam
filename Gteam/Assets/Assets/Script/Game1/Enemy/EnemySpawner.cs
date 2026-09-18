@@ -17,6 +17,7 @@ public class EnemySpawner : MonoBehaviour
 
     public bool gameStarted = false;
     public GameObject enemyPrefab;
+    public Transform centerPoint;
     public void StartGame()
     {
         gameStarted = true;
@@ -33,14 +34,46 @@ public class EnemySpawner : MonoBehaviour
     }
     void SpawnEnemy()
     {
-        Instantiate(
-            enemyPrefab,
-            transform.position,
-            Quaternion.identity
-  
-  );
+        Transform[] points =
+        {
+        leftSpawn,
+        rightSpawn,
+        leftUpSpawn,
+        rightUpSpawn
+    };
 
+        Transform spawnPoint =
+            points[Random.Range(0, points.Length)];
+
+        Vector3 direction =
+            (
+            centerPoint.position -
+            spawnPoint.position
+            ).normalized;
+        
+        if (spawnPoint == leftSpawn)
+            direction = new Vector3(1, 0, -0.5f);
+
+        else if (spawnPoint == rightSpawn)
+            direction = new Vector3(-1, 0, -0.5f);
+
+        else if (spawnPoint == leftUpSpawn)
+            direction = new Vector3(1, 0, -1);
+
+        else
+            direction = new Vector3(-1, 0, -1);
+
+        GameObject enemy =
+            Instantiate(
+                enemyPrefab,
+                spawnPoint.position,
+                Quaternion.identity
+            );
+
+        enemy.GetComponent<EnemyMove>()
+            .SetDirection(direction);
     }
+
    
     private void OnDrawGizmos()
     {

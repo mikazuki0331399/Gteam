@@ -37,10 +37,10 @@ public class EnemyMove : MonoBehaviour
             0
         );
         if (
-            transform.position.x >  45f ||
-            transform.position.x < -45f ||
-            transform.position.z >  70f ||
-            transform.position.z < -45f
+            transform.position.x >  1000f ||
+            transform.position.x < -1000f ||
+            transform.position.z >  1000f ||
+            transform.position.z < -1000f
         )
         {
             Destroy(gameObject);
