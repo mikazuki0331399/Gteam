@@ -1156,12 +1156,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf4606a74ec8add45aa2821b2cc5c8bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healPrefab: {fileID: 316923416451886980, guid: 8b8dde38a5ee5b546ae6b6e0ace186cf, type: 3}
+  healPrefab:
+  - {fileID: 100000, guid: 872c8920734baef4583606a833aa5bc6, type: 3}
+  - {fileID: 100000, guid: d2c8e64a68bbaf14a8cac1d04d316955, type: 3}
   leftSpawn: {fileID: 1407642730}
   rightSpawn: {fileID: 297417348}
   leftUpSpawn: {fileID: 1242669643}
   rightUpSpawn: {fileID: 325971275}
-  spawnRange: 25
+  spawnInterval: 7
+  randomSpawnRange: 25
 --- !u!4 &1123200036
 Transform:
   m_ObjectHideFlags: 0
@@ -1362,19 +1365,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefc163999c02c34ba78b60cf3328d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRange: 10000
-  destroyOffset: 10000
   enemyPrefabs:
-  - {fileID: 5287039382478368536, guid: fdecf39e830a3c44ca406789ce71c753, type: 3}
-  - {fileID: 6649485629609343921, guid: 2bf4a18550c14a946b0c9af1c0ddb4d2, type: 3}
+  - {fileID: 100000, guid: c832a355808680941b8d059169f981e9, type: 3}
+  - {fileID: 100000, guid: a0d34fe1a6c08b245b3e9d676c499f45, type: 3}
+  - {fileID: 100000, guid: 42d85ed12cd73d84a8b69ed27cfe0b53, type: 3}
+  - {fileID: 100000, guid: c8abe02d7b9de0948bb0cbd85e783e4e, type: 3}
   leftSpawn: {fileID: 1407642730}
   rightSpawn: {fileID: 297417348}
   leftUpSpawn: {fileID: 1242669643}
   rightUpSpawn: {fileID: 325971275}
-  randomSpawnRange: 25
-  gameStarted: 0
-  enemyPrefab: {fileID: 6649485629609343921, guid: 2bf4a18550c14a946b0c9af1c0ddb4d2, type: 3}
-  centerPoint: {fileID: 2117050400}
+  spawnInterval: 0.5
+  moveRange: 10
+  moveSpeed: 10
 --- !u!4 &1416621341
 Transform:
   m_ObjectHideFlags: 0
@@ -1919,7 +1921,7 @@ GameObject:
   - component: {fileID: 1805919973}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1947,7 +1949,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -2312,6 +2314,7 @@ MonoBehaviour:
   - {fileID: 127732385}
   - {fileID: 127732385}
   - {fileID: 127732385}
+  healSpawner: {fileID: 1123200035}
 --- !u!4 &1954854512
 Transform:
   m_ObjectHideFlags: 0
@@ -2501,7 +2504,7 @@ Transform:
   m_GameObject: {fileID: 2117050396}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -50}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 1
   m_Children: []

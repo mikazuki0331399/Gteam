@@ -12,6 +12,7 @@ public class Countdown : MonoBehaviour
     public ProgressController progressController;
     public PlayerMove playerMove;
     public StarMove[] stars;
+    public HealSpawner healSpawner;
     IEnumerator Start()
     {
         countdownText.text = "  3";
@@ -36,6 +37,7 @@ public class Countdown : MonoBehaviour
         }
         Debug.Log("プレイヤー移動開始");
         enemySpawner.StartGame();
+        healSpawner.StartGame();
         gameManager.gameStarted = true;
         progressController.gameStarted = true;
     }

@@ -2,29 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.TestTools;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public float spawnRange = 15f;
-    public float destroyOffset = 20f;
+    [Header("敵プレハブ")]
     public GameObject[] enemyPrefabs;
 
+    [Header("スポーン地点")]
     public Transform leftSpawn;
     public Transform rightSpawn;
     public Transform leftUpSpawn;
     public Transform rightUpSpawn;
-    public float randomSpawnRange = 5f;
 
-    public bool gameStarted = false;
-    public GameObject enemyPrefab;
-    public Transform centerPoint;
+    [Header("スポーン設定")]
+    public float spawnInterval = 0.5f;
+
+    [Header("スポーン制御")]
+    public float moveRange = 10f;
+    public float moveSpeed = 10f;
+
+    private Vector3 startPos;
+
     public void StartGame()
     {
-        gameStarted = true;
+        startPos = transform.position;
+
         InvokeRepeating(
             nameof(SpawnEnemy),
             1f,
-            0.5f
+            spawnInterval
         );
     }
 
@@ -32,68 +39,77 @@ public class EnemySpawner : MonoBehaviour
     {
         CancelInvoke();
     }
-    void SpawnEnemy()
+
+    private void SpawnEnemy()
     {
-        Transform[] points =
+        Transform[] spawnPoints =
         {
-        leftSpawn,
-        rightSpawn,
-        leftUpSpawn,
-        rightUpSpawn
-    };
+            leftSpawn,
+            rightSpawn,
+            leftUpSpawn,
+            rightUpSpawn
+        };
 
         Transform spawnPoint =
-            points[Random.Range(0, points.Length)];
+        spawnPoints[
+        Random.Range(
+        0,
+        spawnPoints.Length
+        )
+        ];
 
-        Vector3 direction =
-            (
-            centerPoint.position -
-            spawnPoint.position
-            ).normalized;
-        
+        GameObject enemyPrefab =
+        enemyPrefabs[
+        Random.Range(
+        0,
+        enemyPrefabs.Length
+        )
+        ];
+
+        Vector3 direction;
+
         if (spawnPoint == leftSpawn)
+        {
             direction = new Vector3(1, 0, 0f);
-
+        }
         else if (spawnPoint == rightSpawn)
+        {
             direction = new Vector3(-1, 0, 0f);
-
+        }
         else if (spawnPoint == leftUpSpawn)
-            direction = new Vector3(1, 0f, -1f);
-
+        {
+            direction = new Vector3(1, 0, -1);
+        }
         else
-            direction = new Vector3(-1, 0, -1f);
+        {
+            direction = new Vector3(-1, 0, -1);
+        }
+
+        // Z方向をランダムにずらす
+        Vector3 spawnPos = spawnPoint.position;
+
+        spawnPos.z += Random.Range(
+        0f,
+        25f
+        );
 
         GameObject enemy =
-            Instantiate(
-                enemyPrefab,
-                spawnPoint.position,
-                Quaternion.identity
-            );
+        Instantiate(
+        enemyPrefab,
+        spawnPos,
+        Quaternion.identity
+        );
 
         enemy.GetComponent<EnemyMove>()
-            .SetDirection(direction);
+        .SetDirection(direction);
     }
-
-   
-    private void OnDrawGizmos()
+    private void Update()
     {
-        if (leftSpawn != null)
-        {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawSphere(
-                leftSpawn.position,
-                0.5f
-            );
-        }
+        float z =
+        Mathf.Sin(Time.time * moveSpeed)
+        * moveRange;
 
-        if (rightSpawn != null)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawSphere(
-                rightSpawn.position,
-                0.5f
-            );
-        }
+        transform.position =
+        startPos + new Vector3(0, 0, z);
     }
 }
-

@@ -5,27 +5,34 @@ using UnityEngine;
 
 public class HealSpawner : MonoBehaviour
 {
-    public GameObject healPrefab;
+    public GameObject[] healPrefab;
 
     public Transform leftSpawn;
     public Transform rightSpawn;
     public Transform leftUpSpawn;
     public Transform rightUpSpawn;
 
-    public float spawnRange = 25f;
+    public float spawnInterval = 7f;
 
-    void Start()
+    public float randomSpawnRange = 25f;
+
+    public void StartGame()
     {
         InvokeRepeating(
             nameof(SpawnHeal),
-            7f,
-            7f
+            5f,
+            spawnInterval
         );
     }
 
-    void SpawnHeal()
+    public void StopGame()
     {
-        Transform[] points =
+        CancelInvoke();
+    }
+
+    private void SpawnHeal()
+    {
+        Transform[] spawnPoints =
         {
             leftSpawn,
             rightSpawn,
@@ -34,49 +41,54 @@ public class HealSpawner : MonoBehaviour
         };
 
         Transform spawnPoint =
-            points[Random.Range(0, points.Length)];
+            spawnPoints[
+                Random.Range(
+                    0,
+                    spawnPoints.Length
+                )
+            ];
+
+        Vector3 direction;
+
+        if (spawnPoint == leftSpawn)
+        {
+            direction = new Vector3(1, 0, 0f);
+        }
+        else if (spawnPoint == rightSpawn)
+        {
+            direction = new Vector3(-1, 0, 0f);
+        }
+        else if (spawnPoint == leftUpSpawn)
+        {
+            direction = new Vector3(1, 0, -1);
+        }
+        else
+        {
+            direction = new Vector3(-1, 0, -1);
+        }
 
         Vector3 spawnPos = spawnPoint.position;
 
         spawnPos.z += Random.Range(
             0f,
-            spawnRange
+            25f
         );
+
+        // èCê≥: healPrefab Ç©ÇÁÉâÉìÉ_ÉÄÇ…1Ç¬ëIë
+        GameObject prefab = healPrefab[Random.Range(0, healPrefab.Length)];
 
         GameObject heal =
             Instantiate(
-                healPrefab,
-                spawnPoint.position,
+                prefab,
+                spawnPos,
                 Quaternion.identity
             );
 
-
         heal.GetComponent<HealMove>()
-            .SetDirection(
-                GetDirection(spawnPoint)
+            .SetDirection(direction);
+        spawnPos.z += Random.Range(
+         0f,
+        randomSpawnRange
             );
-
     }
-
-    Vector3 GetDirection(Transform spawnPoint)
-    {
-        if (spawnPoint == leftSpawn)
-            return new Vector3( 1, 0, -0.5f);
-
-        if (spawnPoint == rightSpawn)
-            return new Vector3(-1, 0, -0.5f);
-        if (spawnPoint == leftUpSpawn)
-            return new Vector3(1, 0, -1);
-     
-            return new Vector3(-1, 0, -1);
-    }
-    void Update()
-    {
-        transform.Rotate(
-            0,
-            100 * Time.deltaTime,
-            0
-        );
-    }
-    
 }
