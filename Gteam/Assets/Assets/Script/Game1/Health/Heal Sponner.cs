@@ -46,7 +46,7 @@ public class HealSpawner : MonoBehaviour
         GameObject heal =
             Instantiate(
                 healPrefab,
-                spawnPos,
+                spawnPoint.position,
                 Quaternion.identity
             );
 

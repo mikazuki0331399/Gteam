@@ -26,16 +26,16 @@ public class PlayerMove : MonoBehaviour
 
     // プレイヤーが移動できる範囲
     [SerializeField]
-    private float minX = -8.0f;
+    private float minX = -108.0f;
 
     [SerializeField]
-    private float maxX = 8.0f;
+    private float maxX = 106.0f;
 
     [SerializeField]
-    private float minZ = -4.0f;
+    private float minZ = -50.0f;
 
     [SerializeField]
-    private float maxZ = 4.0f;
+    private float maxZ = 50.0f;
 
     // カメラ揺れ
     [SerializeField]
