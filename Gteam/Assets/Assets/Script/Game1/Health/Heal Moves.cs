@@ -6,7 +6,11 @@ using UnityEngine;
 public class HealMove : MonoBehaviour
 {
     public float speed = 5f;
-    public float rotateSpeed = 10000f;
+
+    public float lifeTime = 15f;
+
+    public float rotateSpeed = 180f;
+    
 
     private Vector3 moveDirection;
 
@@ -15,37 +19,28 @@ public class HealMove : MonoBehaviour
         moveDirection = dir.normalized;
     }
 
-    void Update()
+    void Start()
     {
-        // ˆÚ“®
-        transform.position +=
-            moveDirection * speed * Time.deltaTime;
-
-        // ‰ñ“]
-        transform.Rotate(
-            0,
-            rotateSpeed * Time.deltaTime,
-            0
-        );
         if (
-           transform.position.x > 45f ||
-           transform.position.x < -45f ||
-           transform.position.z > 70f ||
-           transform.position.z < -45f
-       )
+                transform.position.x > 1000f ||
+                transform.position.x < -1000f ||
+                transform.position.z > 1000f ||
+                transform.position.z < -1000f
+            )
         {
             Destroy(gameObject);
         }
     }
 
-
-    private void OnTriggerEnter(Collider other)
+    void Update()
     {
-        if (other.CompareTag("Player"))
-        {
+        transform.position +=
+        moveDirection * speed * Time.deltaTime;
 
-
-            Destroy(gameObject);
-        }
+        transform.Rotate(
+        0,
+        rotateSpeed * Time.deltaTime,
+        0
+        );
     }
 }

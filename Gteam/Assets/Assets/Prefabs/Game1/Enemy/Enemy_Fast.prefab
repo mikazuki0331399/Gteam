@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -6761277357161244817}
   m_Layer: 0
   m_Name: Enemy_Fast
-  m_TagString: Untagged
+  m_TagString: Debris
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1098.0443, y: 533.261, z: 41771.86}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -101,7 +101,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -119,10 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f0a1e9108d7e84aab4d6e346104356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 200
-  destroyDistance: 75
   speed: 20
-  centerPoint: {fileID: 0}
+  rotateSpeed: 200
+  lifeTime: 15
 --- !u!54 &-6761277357161244817
 Rigidbody:
   m_ObjectHideFlags: 0
