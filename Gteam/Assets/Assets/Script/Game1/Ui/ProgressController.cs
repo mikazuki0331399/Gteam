@@ -10,9 +10,9 @@ public class ProgressController : MonoBehaviour
     public bool gameStarted = false;
     private float timer = 0f;
 
-    public float startY = 200f;
-    public float endY = 250f;
-    public float offsetX = 0f;
+    public float startX = 200f;
+    public float endX = 250f;
+    public float fixedY = 0f;
     void Update()
     {
 
@@ -26,17 +26,17 @@ public class ProgressController : MonoBehaviour
 
         progress = Mathf.Clamp01(progress);
 
-        float y = Mathf.Lerp(
-            startY,
-            endY,
+        float x = Mathf.Lerp(
+            startX,
+            endX,
             progress
         );
 
 
         arrow.anchoredPosition =
             new Vector2(
-                offsetX,
-                y
+            x,
+            fixedY
             );
 
     }

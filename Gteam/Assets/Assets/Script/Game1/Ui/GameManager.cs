@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     private bool isFinished = false;
     public  bool gameStarted = false;
-
+    public FadeManager fadeManager;
     private void Start()
     {
         finishText.gameObject.SetActive(false);
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         if (isFinished) return;
 
         timer += Time.deltaTime;
-        Debug.Log("Timer = " + timer);
+       
         if (timer >= gameTime)
         {
             Debug.Log("FINISHèåèíBê¨");
@@ -45,7 +45,13 @@ public class GameManager : MonoBehaviour
         finishText.text = "FINISH!";
         finishText.gameObject.SetActive(true);
         FinishGame(finishText);
-        StartCoroutine(GoResult());
+        StartCoroutine(FinishRoutine());
+        StarMove[] stars = FindObjectsOfType<StarMove>();
+
+        foreach (StarMove star in stars)
+        {
+            star.canMove = false;
+        }
     }
 
     public void FinishGame(TextMeshProUGUI finishUIText)
@@ -68,13 +74,20 @@ public class GameManager : MonoBehaviour
             Destroy(h);
         }
         enemySpawner.StopGame();
-        Time.timeScale = 0f;
+       
+        StartCoroutine(FinishRoutine());
     }
 
-    private IEnumerator GoResult()
+    private IEnumerator FinishRoutine()
     {
-        yield return new WaitForSecondsRealtime (3f);
+        yield return new WaitForSecondsRealtime(1f);
+
+        yield return StartCoroutine(
+        fadeManager.FadeOut(2f)
+        );
 
         SceneManager.LoadScene("ResultScene");
     }
+
+
 }
