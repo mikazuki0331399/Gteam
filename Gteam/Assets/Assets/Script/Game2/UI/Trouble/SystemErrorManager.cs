@@ -79,4 +79,13 @@ public class SystemErrorManager : MonoBehaviour
             Debug.Log("SYSTEM ERROR 終了");
         }
     }
+    public void ForceStop()
+    {
+        targetRange.SetActive(true);
+
+        noiseImage1.SetActive(false);
+        noiseImage2.SetActive(false);
+
+        systemErrorText.SetActive(false);
+    }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PowerCheck : MonoBehaviour
 {
@@ -21,6 +22,26 @@ public class PowerCheck : MonoBehaviour
     [SerializeField]
     private DebrisMove debrisMove;
 
+    [SerializeField]
+    private GameObject clearText;
+
+    [SerializeField]
+    private PlayerPowerController playerController;
+
+    [SerializeField]
+    private TimerController timerController;
+
+    [SerializeField]
+    private TargetRangeController targetRangeController;
+
+    [SerializeField]
+    private TroubleManager troubleManager;
+
+    [SerializeField]
+    private SystemErrorManager systemErrorManager;
+
+    private bool isClear = false;
+
     void Update()
     {
         // Y座標の差を取得
@@ -34,7 +55,7 @@ public class PowerCheck : MonoBehaviour
         if (distance < 40f)
         {
             //進行度
-            progress += 5f * Time.deltaTime;
+            progress += 50f * Time.deltaTime;
 
             progressGauge.SetProgress(progress);
 
@@ -44,9 +65,41 @@ public class PowerCheck : MonoBehaviour
         }
 
         //ゴール処理
-        if (progress >= 100f)
+        if (progress >= 100f && !isClear)
         {
-            Debug.Log("ゲームクリア！");
+            isClear = true;
+            StartCoroutine(ClearRoutine());
         }
+    }
+
+    IEnumerator ClearRoutine()
+    {
+        // プレイヤー操作停止
+        playerController.enabled = false;
+        timerController.enabled = false;
+        targetRangeController.enabled = false;
+
+        troubleManager.StopAllCoroutines();
+        systemErrorManager.StopAllCoroutines();
+
+        troubleManager.enabled = false;
+        systemErrorManager.enabled = false;
+
+        // 追加
+        systemErrorManager.ForceStop();
+        systemErrorManager.enabled = false;
+
+        // クリア文字表示
+        clearText.SetActive(true);
+
+        Debug.Log("MISSION COMPLETE");
+
+        // 3秒待つ
+        yield return new WaitForSeconds(3f);
+
+        Debug.Log("リザルトシーンへ移動");
+
+        // 後で追加
+        // SceneManager.LoadScene("ResultScene");
     }
 }
