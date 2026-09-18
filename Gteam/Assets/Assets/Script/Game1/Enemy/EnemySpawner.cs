@@ -52,16 +52,16 @@ public class EnemySpawner : MonoBehaviour
             ).normalized;
         
         if (spawnPoint == leftSpawn)
-            direction = new Vector3(1, 0, -0.5f);
+            direction = new Vector3(1, 0, 0f);
 
         else if (spawnPoint == rightSpawn)
-            direction = new Vector3(-1, 0, -0.5f);
+            direction = new Vector3(-1, 0, 0f);
 
         else if (spawnPoint == leftUpSpawn)
-            direction = new Vector3(1, 0, -1);
+            direction = new Vector3(1, 0f, -1f);
 
         else
-            direction = new Vector3(-1, 0, -1);
+            direction = new Vector3(-1, 0, -1f);
 
         GameObject enemy =
             Instantiate(
