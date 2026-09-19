@@ -26,7 +26,7 @@ public class TroubleManager : MonoBehaviour
 
             // 10～20秒の間でランダム待機
             yield return new WaitForSeconds(
-                Random.Range(10f, 20f));
+                Random.Range(8f, 10f));
 
             Debug.Log("姿勢乱れ発生！");
 
@@ -52,7 +52,7 @@ public class TroubleManager : MonoBehaviour
             // ここで姿勢乱れ開始
             playerPower.isTrouble = true;
 
-            float troubleTime = 10f;
+            float troubleTime = 6f;
             float timer = 0f;
 
             while (timer < troubleTime)

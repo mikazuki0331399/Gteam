@@ -39,7 +39,7 @@ public class SystemErrorManager : MonoBehaviour
         {
             // エラー発生まで待機
             yield return new WaitForSeconds(
-                Random.Range(20f, 30f));
+                Random.Range(15f, 20f));
 
             Debug.Log("SYSTEM ERROR 発生");
 
@@ -61,7 +61,7 @@ public class SystemErrorManager : MonoBehaviour
 
             systemErrorText.SetActive(true);
 
-            float errorTime = 10f;
+            float errorTime = 6f;
             float timer = 0f;
 
             while (timer < errorTime)
