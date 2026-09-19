@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,8 +7,6 @@ public class StarMove : MonoBehaviour
     [SerializeField]
     private float speed = 100f;
 
-
-    // ƒJƒEƒ“ƒgƒ_ƒEƒ“Œã‚É“®‚©‚·—p
     public bool canMove = true;
 
     void Update()
@@ -18,12 +16,10 @@ public class StarMove : MonoBehaviour
             return;
         }
 
-        transform.position +=
-                Vector3.back * speed * Time.deltaTime;
+        transform.Translate(
+            Vector3.down * speed * Time.deltaTime);
 
-        transform.Translate(Vector3.down * speed * Time.deltaTime);
-
-        if (transform.localPosition.y < -600f)
+        if (transform.localPosition.y < -300f)
         {
             Vector3 pos = transform.localPosition;
 

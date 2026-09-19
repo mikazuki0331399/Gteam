@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,26 +6,26 @@ using UnityEngine.SceneManagement;
 public class PlayerMove : MonoBehaviour
 {
     public bool canMove = false;
-    // ƒvƒŒƒCƒ„[‚ÌˆÚ“®‘¬“x
+    // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ç§»å‹•é€Ÿåº¦
     [SerializeField]
     private float moveSpeed = 15.0f;
 
-    // ƒvƒŒƒCƒ„[‚ÌHP
+    // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®HP
     [SerializeField]
     private int hp = 10;
 
-    //ƒvƒŒƒCƒ„[‚ÌHPƒo[‚Ì‚â‚Â
+    //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®HPãƒãƒ¼ã®ã‚„ã¤
     [SerializeField]
     private HealthGauge healthGauge;
 
-    // –³“GŠÔ‚Ì’·‚³
+    // ç„¡æ•µæ™‚é–“ã®é•·ã•
     [SerializeField]
     private float invincibleTime = 1.0f;
 
-    // Œ»İ–³“G’†‚©
+    // ç¾åœ¨ç„¡æ•µä¸­ã‹
     private bool isInvincible = false;
 
-    // ƒvƒŒƒCƒ„[‚ªˆÚ“®‚Å‚«‚é”ÍˆÍ
+    // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒç§»å‹•ã§ãã‚‹ç¯„å›²
     [SerializeField]
     private float minX = -108.0f;
 
@@ -38,13 +38,36 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private float maxZ = 50.0f;
 
-    // ƒJƒƒ‰—h‚ê
+    // ã‚«ãƒ¡ãƒ©æºã‚Œ
     [SerializeField]
     private CameraShake cameraShake;
 
     [SerializeField]
     private DamageWarning damageWarning;
-   
+
+    // åŠ é€Ÿåº¦
+    [SerializeField]
+    private float acceleration = 120f;
+
+    // æœ€å¤§é€Ÿåº¦
+    [SerializeField]
+    private float maxSpeed = 50f;
+
+    // ç¾åœ¨ã®é€Ÿåº¦
+    private Vector3 velocity;
+
+    // éŸ³å†ç”Ÿ
+    [SerializeField]
+    private AudioSource audioSource;
+
+    // è¢«å¼¾éŸ³
+    [SerializeField]
+    private AudioClip damageSE;
+
+    // å›å¾©éŸ³
+    [SerializeField]
+    private AudioClip healSE;
+
 
     void Start()
     {
@@ -58,51 +81,69 @@ public class PlayerMove : MonoBehaviour
         {
             return;
         }
-        // ¶‰E“ü—Íæ“¾
+        // å·¦å³å…¥åŠ›å–å¾—
         float horizontal = Input.GetAxisRaw("Horizontal");
 
-        // ‘OŒã“ü—Íæ“¾
+        // å‰å¾Œå…¥åŠ›å–å¾—
         float vertical = Input.GetAxisRaw("Vertical");
 
-        // ˆÚ“®•ûŒü
-        Vector3 move = new Vector3(horizontal, 0.0f, vertical);
+        Vector3 input = new Vector3(horizontal, 0.0f, vertical);
 
-        // ƒvƒŒƒCƒ„[‚ğˆÚ“®
-        transform.position += move.normalized * moveSpeed * Time.deltaTime;
+        // åŠ é€Ÿåº¦ã‚’ä¸ãˆã‚‹
+        velocity += input.normalized *
+                    acceleration *
+                    Time.deltaTime;
 
-        // Œ»İ‚ÌÀ•W‚ğæ“¾
+        // æœ€å¤§é€Ÿåº¦åˆ¶é™
+        velocity = Vector3.ClampMagnitude(
+                        velocity,
+                        maxSpeed);
+
+        // å°‘ã—ãšã¤æ¸›é€Ÿ
+        //velocity *= 0.98f;
+
+        // é€Ÿåº¦ã§ç§»å‹•
+        transform.position +=
+            velocity * Time.deltaTime;
+
+        // ç¾åœ¨ã®åº§æ¨™ã‚’å–å¾—
         Vector3 pos = transform.position;
 
-        // XÀ•Wi¶‰Ej‚ÌˆÚ“®”ÍˆÍ‚ğ§ŒÀ
+        // Xåº§æ¨™ï¼ˆå·¦å³ï¼‰ã®ç§»å‹•ç¯„å›²ã‚’åˆ¶é™
         pos.x = Mathf.Clamp(pos.x, minX, maxX);
 
-        // ZÀ•Wi‘OŒãj‚ÌˆÚ“®”ÍˆÍ‚ğ§ŒÀ
+        // Zåº§æ¨™ï¼ˆå‰å¾Œï¼‰ã®ç§»å‹•ç¯„å›²ã‚’åˆ¶é™
         pos.z = Mathf.Clamp(pos.z, minZ, maxZ);
 
-        // §ŒÀŒã‚ÌÀ•W‚ğ”½‰f
+        // åˆ¶é™å¾Œã®åº§æ¨™ã‚’åæ˜ 
         transform.position = pos;
     }
 
-    // ƒfƒuƒŠ‚ÆÚG‚µ‚½
+    // ãƒ‡ãƒ–ãƒªã¨æ¥è§¦ã—ãŸæ™‚
 
     private void OnTriggerEnter(Collider other)
     {
-        // ƒfƒuƒŠ‚É“–‚½‚Á‚½
+        // ãƒ‡ãƒ–ãƒªã«å½“ãŸã£ãŸæ™‚
         if (other.CompareTag("Debris"))
         {
-            // –³“G’†‚È‚çƒ_ƒ[ƒW‚ğó‚¯‚È‚¢
+            // ç„¡æ•µä¸­ãªã‚‰ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’å—ã‘ãªã„
             if (isInvincible)
             {
                 return;
             }
 
             hp--;
+
+            audioSource.PlayOneShot(damageSE);
+
             if (hp <= 3)
             {
                 Debug.Log("Danger ON");
 
                 damageWarning.isDanger = true;
             }
+
+
             
             if (hp <= 0)
             {
@@ -115,59 +156,62 @@ public class PlayerMove : MonoBehaviour
             healthGauge.SetGauge((float)hp / 10f);
 
 
-            // ƒ_ƒ[ƒW‚¾‚¯—h‚ç‚·
+            // ãƒ€ãƒ¡ãƒ¼ã‚¸æ™‚ã ã‘æºã‚‰ã™
             healthGauge.ShakeGauge();
 
             cameraShake.Shake();
 
-            Debug.Log("”í’eI");
-            Debug.Log("Œ»İHP : " + hp);
+            Debug.Log("è¢«å¼¾ï¼");
+            Debug.Log("ç¾åœ¨HP : " + hp);
 
             StartCoroutine(Invincible());
 
             if (hp <= 0)
             {
-                Debug.Log("ƒQ[ƒ€ƒI[ƒo[");
+                Debug.Log("ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼");
             }
         }
 
-        // ‰ñ•œƒAƒCƒeƒ€‚É“–‚½‚Á‚½
+        // å›å¾©ã‚¢ã‚¤ãƒ†ãƒ ã«å½“ãŸã£ãŸæ™‚
         if (other.CompareTag("Health"))
         {
             hp++;
+
+            audioSource.PlayOneShot(healSE);
+
             if (hp >= 4)
             {
                 damageWarning.isDanger = false;
             }
-            // HP‚ªÅ‘å’l‚ğ’´‚¦‚È‚¢‚æ‚¤‚É‚·‚é
+            // HPãŒæœ€å¤§å€¤ã‚’è¶…ãˆãªã„ã‚ˆã†ã«ã™ã‚‹
             if (hp > 10)
             {
                 hp = 10;
             }
 
-            // HPƒo[XV
+            // HPãƒãƒ¼æ›´æ–°
             healthGauge.SetGauge((float)hp / 10f);
 
-            Debug.Log("HP‰ñ•œI");
-            Debug.Log("Œ»İHP : " + hp);
+            Debug.Log("HPå›å¾©ï¼");
+            Debug.Log("ç¾åœ¨HP : " + hp);
 
-            // ‰ñ•œƒAƒCƒeƒ€‚ğÁ‚·
+            // å›å¾©ã‚¢ã‚¤ãƒ†ãƒ ã‚’æ¶ˆã™
             Destroy(other.gameObject);
         }
     }
 
 
-    // –³“GŠÔˆ—
+    // ç„¡æ•µæ™‚é–“å‡¦ç†
     private IEnumerator Invincible()
     {
         isInvincible = true;
 
-        Debug.Log("–³“GŠJn");
+        Debug.Log("ç„¡æ•µé–‹å§‹");
 
         yield return new WaitForSeconds(invincibleTime);
 
         isInvincible = false;
 
-        Debug.Log("–³“GI—¹");
+        Debug.Log("ç„¡æ•µçµ‚äº†");
     }
 }

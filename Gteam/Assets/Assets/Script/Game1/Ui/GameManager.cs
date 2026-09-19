@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -18,6 +18,12 @@ public class GameManager : MonoBehaviour
     private bool isFinished = false;
     public  bool gameStarted = false;
     public FadeManager fadeManager;
+
+    [SerializeField]
+    private AudioSource audioSource;
+
+    [SerializeField]
+    private AudioClip clearSE;
     private void Start()
     {
         finishText.gameObject.SetActive(false);
@@ -35,7 +41,7 @@ public class GameManager : MonoBehaviour
        
         if (timer >= gameTime)
         {
-            Debug.Log("FINISHğŒ’B¬");
+            Debug.Log("FINISHæ¡ä»¶é”æˆ");
             FinishGame();
         }
     }
@@ -94,20 +100,26 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GameOverRoutine()
     {
-        Debug.Log("RoutineŠJn");
+        Debug.Log("Routineé–‹å§‹");
 
         yield return StartCoroutine(
             fadeManager.FadeOut(2f)
         );
 
-        Debug.Log("LoadSceneŠJn");
+        Debug.Log("LoadSceneé–‹å§‹");
 
         SceneManager.LoadScene("GameOverScene");
     }
 
     private IEnumerator ClearRoutine()
     {
+        audioSource.PlayOneShot(clearSE);
+
         yield return new WaitForSeconds(2f);
+
+        //yield return StartCoroutine(
+        //    fadeManager.FadeOut(1f)
+        //);
 
         LoadGame2();
     }
@@ -117,7 +129,7 @@ public class GameManager : MonoBehaviour
 
         LoadManager.nextSceneName = "GameScene2";
 
-        Debug.Log("Ÿ‚ÌƒV[ƒ“İ’èF" + LoadManager.nextSceneName);
+        Debug.Log("æ¬¡ã®ã‚·ãƒ¼ãƒ³è¨­å®šï¼š" + LoadManager.nextSceneName);
 
         SceneManager.LoadScene("LoadScene");
     }
