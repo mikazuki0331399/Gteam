@@ -13,21 +13,19 @@ public class DamageWarning : MonoBehaviour
 
     public float maxAlpha = 0.3f;
 
+    
+
     void Update()
     {
-        Debug.Log(isDanger);
-
-        Color color = damageImage.color;
-        color.a = 1f;
-        damageImage.color = color;
-
         if (isDanger)
         {
-            color.a =
-            Mathf.PingPong(
-            Time.time * blinkSpeed,
-            maxAlpha
-            );
+            Debug.Log(gameObject.name + " が赤表示中");
+        }
+
+        Color color = damageImage.color;
+        if (isDanger)
+        {
+            color.a = 0.5f;
         }
         else
         {

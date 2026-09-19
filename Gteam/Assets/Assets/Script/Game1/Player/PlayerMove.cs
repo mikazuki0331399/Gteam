@@ -47,12 +47,13 @@ public class PlayerMove : MonoBehaviour
 
     void Start()
     {
+        
         canMove = false;
     }
 
     void Update()
     {
-     
+      //  Debug.Log("HP=" + hp + " Invincible=" + isInvincible);
         if (!canMove)
         {
             return;
@@ -94,20 +95,27 @@ public class PlayerMove : MonoBehaviour
             {
                 return;
             }
-
+            
             hp--;
             if (hp <= 3)
             {
                 Debug.Log("Danger ON");
+                Debug.Log(damageWarning.gameObject.name);
 
                 damageWarning.isDanger = true;
             }
             
             if (hp <= 0)
             {
+                Debug.Log(damageWarning);
+
                 damageWarning.isDanger = false;
+                if (damageWarning != null)
+                {
+                    damageWarning.isDanger = false;
+                }
                 FindObjectOfType<GameManager>()
-                    .FinishGame();
+                .FinishGame();
             }
 
             healthGauge.SetGauge((float)hp / 10f);
