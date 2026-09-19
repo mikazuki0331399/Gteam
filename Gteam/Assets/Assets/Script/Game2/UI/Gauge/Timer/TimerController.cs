@@ -46,6 +46,6 @@ public class TimerController : MonoBehaviour
             fadeManager.FadeOut(1f));
 
         Debug.Log("ゲームオーバーシーンへ移動");
-        //SceneManager.LoadScene("GameOverScene");
+        SceneManager.LoadScene("GameOverScene");
     }
 }
