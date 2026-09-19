@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         finishText.text = "FINISH!";
         finishText.gameObject.SetActive(true);
         FinishGame(finishText);
-        StartCoroutine(FinishRoutine());
+        StartCoroutine(ClearRoutine());
         StarMove[] stars = FindObjectsOfType<StarMove>();
 
         foreach (StarMove star in stars)
@@ -75,19 +75,20 @@ public class GameManager : MonoBehaviour
         }
         enemySpawner.StopGame();
        
-        StartCoroutine(FinishRoutine());
+        StartCoroutine(ClearRoutine());
     }
 
-    private IEnumerator FinishRoutine()
+   
+    public void ClearGame()
     {
-        yield return new WaitForSecondsRealtime(1f);
-
-        yield return StartCoroutine(
-        fadeManager.FadeOut(2f)
-        );
-
-        SceneManager.LoadScene("ResultScene");
+        StartCoroutine(ClearRoutine());
     }
 
+    private IEnumerator ClearRoutine()
+    {
+        yield return new WaitForSeconds(2f);
+
+        SceneManager.LoadScene("LoadScene2");
+    }
 
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -108,6 +109,7 @@ public class PlayerMove : MonoBehaviour
                 damageWarning.isDanger = false;
                 FindObjectOfType<GameManager>()
                     .FinishGame();
+                SceneManager.LoadScene("ResultScene");
             }
 
             healthGauge.SetGauge((float)hp / 10f);

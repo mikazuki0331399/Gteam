@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class FadeManager : MonoBehaviour
+public class FadeManager_Game1 : MonoBehaviour
 {
     public Image fadeImage;
 
