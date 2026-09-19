@@ -44,6 +44,12 @@ public class PowerCheck : MonoBehaviour
     [SerializeField]
     private FadeManager fadeManager;
 
+    [SerializeField]
+    private AudioSource audioSource;
+
+    [SerializeField]
+    private AudioClip clearSE;
+
     private bool isClear = false;
 
     void Update()
@@ -59,7 +65,7 @@ public class PowerCheck : MonoBehaviour
         if (distance < 40f)
         {
             //進行度
-            progress += 1f * Time.deltaTime;
+            progress += 50f * Time.deltaTime;
 
             progressGauge.SetProgress(progress);
 
@@ -78,6 +84,9 @@ public class PowerCheck : MonoBehaviour
 
     IEnumerator ClearRoutine()
     {
+        // クリア音
+        audioSource.PlayOneShot(clearSE);
+
         // プレイヤー操作停止
         playerController.enabled = false;
         timerController.enabled = false;
@@ -106,6 +115,6 @@ public class PowerCheck : MonoBehaviour
         Debug.Log("クリアシーンへ移動");
 
         // クリアシーンへ
-        //SceneManager.LoadScene("ResultScene");
+        SceneManager.LoadScene("ClearScene");
     }
 }

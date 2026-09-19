@@ -23,6 +23,15 @@ public class SystemErrorManager : MonoBehaviour
     [SerializeField]
     private SystemErrorShake systemErrorShake;
 
+    [SerializeField]
+    private AudioSource audioSource;
+
+    [SerializeField]
+    private AudioClip cautionSE;
+
+    [SerializeField]
+    private AudioClip errorSE;
+
 
     IEnumerator Start()
     {
@@ -37,6 +46,8 @@ public class SystemErrorManager : MonoBehaviour
             systemErrorShake.isSystemError = true;
 
             troubleText.text = "CAUTION";
+
+            audioSource.PlayOneShot(cautionSE);
 
             troubleText.gameObject.SetActive(true);
 
@@ -59,6 +70,8 @@ public class SystemErrorManager : MonoBehaviour
 
                 systemErrorText.SetActive(
                     !systemErrorText.activeSelf);
+
+                audioSource.PlayOneShot(errorSE);
 
                 yield return new WaitForSeconds(0.5f);
 
