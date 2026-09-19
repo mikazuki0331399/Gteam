@@ -109,7 +109,7 @@ public class PlayerMove : MonoBehaviour
                 damageWarning.isDanger = false;
                 FindObjectOfType<GameManager>()
                     .FinishGame();
-                SceneManager.LoadScene("ResultScene");
+                SceneManager.LoadScene("GameOverScene");
             }
 
             healthGauge.SetGauge((float)hp / 10f);

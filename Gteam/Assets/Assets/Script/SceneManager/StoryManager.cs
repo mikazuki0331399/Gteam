@@ -1,21 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StoryManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float waitTime = 10f;
 
-    // Update is called once per frame
+    private float timer;
+    private bool isLoading;
+
     void Update()
     {
+        if (isLoading)
+        {
+            return;
+        }
+
+        timer += Time.deltaTime;
+
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            SceneLoader.Instance.LoadLoad();
+            LoadGame1();
         }
+
+        if (timer >= waitTime)
+        {
+            LoadGame1();
+        }
+    }
+
+    private void LoadGame1()
+    {
+        isLoading = true;
+
+        LoadManager.nextSceneName = "GameScene1";
+
+        Debug.Log("Ÿ‚ÌƒV[ƒ“İ’èF" + LoadManager.nextSceneName);
+
+        SceneManager.LoadScene("LoadScene");
     }
 }

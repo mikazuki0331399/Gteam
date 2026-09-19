@@ -12,6 +12,6 @@ public class ResultButton : MonoBehaviour
 
     public void ExitBtn()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("TitleScene");
     }
 }

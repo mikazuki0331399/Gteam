@@ -7,13 +7,13 @@ public class Game2Manager : MonoBehaviour
 {
     public void ClearGame()
     {
-        StartCoroutine(ClearRoutine());
+        SceneManager.LoadScene("GameClearScene");
     }
 
-    private IEnumerator ClearRoutine()
+    public void GameOver()
     {
-        yield return new WaitForSeconds(2f);
-
-        SceneManager.LoadScene("ResultScene");
+        SceneManager.LoadScene("GameOverScene");
     }
+
+   
 }

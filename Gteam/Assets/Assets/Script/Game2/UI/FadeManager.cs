@@ -10,22 +10,23 @@ public class FadeManager : MonoBehaviour
 
     public IEnumerator FadeOut(float duration)
     {
-        float timer = 0f;
+        Debug.Log("FadeOut開始");
 
-        Color color = fadeImage.color;
+        float time = 0;
 
-        while (timer < duration)
+        while (time < duration)
         {
-            timer += Time.deltaTime;
+            time += Time.deltaTime;
 
-            color.a = timer / duration;
-
+            Color color = fadeImage.color;
+            color.a = time / duration;
             fadeImage.color = color;
+
+            Debug.Log(color.a);
 
             yield return null;
         }
 
-        color.a = 1f;
-        fadeImage.color = color;
+        Debug.Log("FadeOut終了");
     }
 }

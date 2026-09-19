@@ -5,26 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class LoadManager : MonoBehaviour
 {
-    public enum NextScene
-    {
-        Game1,
-        Game2,
-        Result
-    }
-    public string nextSceneName;
-  
-    // Start is called before the first frame update
+    public static string nextSceneName;
 
     IEnumerator Start()
     {
-        yield return new WaitForSeconds(3f);
+        Debug.Log("LoadSceneŠJŽn");
+        Debug.Log("nextSceneName = " + nextSceneName);
+
+        yield return new WaitForSeconds(5f);
 
         SceneManager.LoadScene(nextSceneName);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public EnemySpawner enemySpawner;
 
     private float timer = 0f;
-
+    private bool isLoading;
     private bool isFinished = false;
     public  bool gameStarted = false;
     public FadeManager fadeManager;
@@ -44,9 +44,11 @@ public class GameManager : MonoBehaviour
     {
         finishText.text = "FINISH!";
         finishText.gameObject.SetActive(true);
+
         FinishGame(finishText);
-        StartCoroutine(ClearRoutine());
-        StarMove[] stars = FindObjectsOfType<StarMove>();
+
+        StarMove[] stars =
+        FindObjectsOfType<StarMove>();
 
         foreach (StarMove star in stars)
         {
@@ -78,17 +80,45 @@ public class GameManager : MonoBehaviour
         StartCoroutine(ClearRoutine());
     }
 
-   
+
     public void ClearGame()
     {
-        StartCoroutine(ClearRoutine());
+        SceneManager.LoadScene("LoadScene");
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("GameOver");
+        StartCoroutine(GameOverRoutine());
+    }
+
+    private IEnumerator GameOverRoutine()
+    {
+        Debug.Log("Routine開始");
+
+        yield return StartCoroutine(
+            fadeManager.FadeOut(2f)
+        );
+
+        Debug.Log("LoadScene開始");
+
+        SceneManager.LoadScene("GameOverScene");
     }
 
     private IEnumerator ClearRoutine()
     {
         yield return new WaitForSeconds(2f);
 
-        SceneManager.LoadScene("LoadScene2");
+        LoadGame2();
     }
+    public void LoadGame2()         
+    {
+        isLoading = true;
 
+        LoadManager.nextSceneName = "GameScene2";
+
+        Debug.Log("次のシーン設定：" + LoadManager.nextSceneName);
+
+        SceneManager.LoadScene("LoadScene");
+    }
 }
