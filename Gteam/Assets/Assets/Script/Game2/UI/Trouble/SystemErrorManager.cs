@@ -35,6 +35,12 @@ public class SystemErrorManager : MonoBehaviour
 
     IEnumerator Start()
     {
+        // ゲーム開始待機
+        while (!GameStartController.gameStarted)
+        {
+            yield return null;
+        }
+
         while (true)
         {
             // エラー発生まで待機

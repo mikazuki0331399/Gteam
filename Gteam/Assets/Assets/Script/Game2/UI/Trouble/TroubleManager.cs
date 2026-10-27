@@ -21,6 +21,12 @@ public class TroubleManager : MonoBehaviour
     private AudioClip troubleSE;
     IEnumerator Start()
     {
+        // ゲーム開始待機
+        while (!GameStartController.gameStarted)
+        {
+            yield return null;
+        }
+
         while (true)
         {
 

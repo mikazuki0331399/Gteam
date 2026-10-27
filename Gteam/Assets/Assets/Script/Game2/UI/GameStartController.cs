@@ -22,10 +22,12 @@ public class GameStartController : MonoBehaviour
     [SerializeField]
     private SystemErrorManager systemErrorManager;
 
-    private bool gameStarted = false;
+    public static bool gameStarted = false;
 
     void Start()
     {
+        gameStarted = false;
+
         playerController.enabled = false;
         timerController.enabled = false;
         targetRangeController.enabled = false;
