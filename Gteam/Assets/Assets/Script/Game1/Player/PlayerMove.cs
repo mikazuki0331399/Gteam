@@ -76,7 +76,10 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-     
+        if (ExplanationManager.IsExplaining)
+        {
+            return;
+        }
         if (!canMove)
         {
             return;

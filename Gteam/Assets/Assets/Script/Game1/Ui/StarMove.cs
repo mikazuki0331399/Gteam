@@ -11,6 +11,10 @@ public class StarMove : MonoBehaviour
 
     void Update()
     {
+        if (ExplanationManager.IsExplaining)
+        {
+            return;
+        }
         if (!canMove)
         {
             return;

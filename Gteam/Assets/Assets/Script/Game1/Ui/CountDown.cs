@@ -15,27 +15,32 @@ public class Countdown : MonoBehaviour
     public HealSpawner healSpawner;
     IEnumerator Start()
     {
-        countdownText.text = "  3";
+        while (ExplanationManager.IsExplaining)
+        {
+            yield return null;
+        }
+
+        countdownText.text = "3";
         yield return new WaitForSeconds(1);
 
-        countdownText.text = "  2";
+        countdownText.text = "2";
         yield return new WaitForSeconds(1);
 
-        countdownText.text = "  1";
+        countdownText.text = "1";
         yield return new WaitForSeconds(1);
 
         countdownText.text = "START!";
         yield return new WaitForSeconds(1);
-     
+
         countdownText.gameObject.SetActive(false);
 
         playerMove.canMove = true;
-        //すべての星を動かす
+
         foreach (StarMove star in stars)
         {
             star.canMove = true;
         }
-        Debug.Log("プレイヤー移動開始");
+
         enemySpawner.StartGame();
         healSpawner.StartGame();
         gameManager.gameStarted = true;

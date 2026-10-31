@@ -105,6 +105,10 @@ public class EnemySpawner : MonoBehaviour
     }
     private void Update()
     {
+        if (ExplanationManager.IsExplaining)
+        {
+            return;
+        }
         float z =
         Mathf.Sin(Time.time * moveSpeed)
         * moveRange;

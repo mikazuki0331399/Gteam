@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     private float timer = 0f;
     private bool isLoading;
     private bool isFinished = false;
-    public  bool gameStarted = false;
+    public bool gameStarted = false;
     public FadeManager fadeManager;
 
     [SerializeField]
@@ -31,14 +31,18 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        if(!gameStarted)
+        if (ExplanationManager.IsExplaining)
         {
-                      return;
+            return;
+        }
+        if (!gameStarted)
+        {
+            return;
         }
         if (isFinished) return;
 
         timer += Time.deltaTime;
-       
+
         if (timer >= gameTime)
         {
             Debug.Log("FINISH条件達成");
@@ -82,7 +86,7 @@ public class GameManager : MonoBehaviour
             Destroy(h);
         }
         enemySpawner.StopGame();
-       
+
         StartCoroutine(ClearRoutine());
     }
 
@@ -123,7 +127,7 @@ public class GameManager : MonoBehaviour
 
         LoadGame2();
     }
-    public void LoadGame2()         
+    public void LoadGame2()
     {
         isLoading = true;
 
