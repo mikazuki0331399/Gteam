@@ -38,8 +38,8 @@ public class HealMove : MonoBehaviour
         moveDirection * speed * Time.deltaTime;
 
         transform.Rotate(
-        0,
         rotateSpeed * Time.deltaTime,
+        0,
         0
         );
     }
